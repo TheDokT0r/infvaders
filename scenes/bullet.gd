@@ -3,7 +3,8 @@ class_name bullet
 extends Area2D
 
 var speed = 600
-var direction : Vector2 = Vector2.UP
+@export var direction := Vector2.UP
+@export var shot_by_enemy := false
 
 signal bullet_freed()
 

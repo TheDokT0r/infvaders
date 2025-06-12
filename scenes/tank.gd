@@ -11,3 +11,8 @@ func _physics_process(delta):
 	
 	self.position.x = mouse_position.x
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is bullet and area.shot_by_enemy:
+		call_deferred("free")

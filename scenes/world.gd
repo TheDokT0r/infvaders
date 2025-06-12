@@ -67,6 +67,7 @@ var steps_before_down := 5
 var speed_mult := 1
 
 func _on_timer_timeout() -> void:
+	enemy_shoot()
 	step_count += 1
 
 	if step_count < steps_before_down:
@@ -82,3 +83,8 @@ func move_enemies(dir: Vector2) -> void:
 	for e in enemies:
 		e.position += dir * 10 * speed_mult
 		
+
+func enemy_shoot():
+	var r = randf()
+	if r >= 0.8:
+		enemies.pick_random().shoot(self)

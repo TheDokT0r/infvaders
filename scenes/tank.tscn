@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3ds83pjjcp6i"]
+[gd_scene load_steps=5 format=3 uid="uid://d3ds83pjjcp6i"]
 
 [ext_resource type="Script" uid="uid://dv6olj183fg1" path="res://scenes/tank.gd" id="1_c4xvs"]
 [ext_resource type="Texture2D" uid="uid://hjmb5inewev4" path="res://sprites/tank.png" id="1_qrxud"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4xvs"]
 radius = 5.0
 height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4xvs"]
+radius = 6.08276
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_c4xvs")
@@ -17,3 +20,11 @@ texture = ExtResource("1_qrxud")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_c4xvs")
 one_way_collision_margin = 72.4
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_c4xvs")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
